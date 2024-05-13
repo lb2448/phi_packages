@@ -4,7 +4,7 @@ import numba as nb
 from scipy.spatial.transform import Rotation as R
 from visualization_msgs.msg import Marker
 from std_msgs.msg import ColorRGBA
-from geometry_msgs.msg import Point
+from geometry_msgs.msg import PoseStamped, Quaternion, PoseWithCovarianceStamped, PointStamped, TransformStamped, Point, Pose, Quaternion
 import rclpy
 import triangle as tr
 import matplotlib
@@ -57,7 +57,7 @@ def make_plane_marker(shape, normal, zero_point, color, ns='plane_marker', id=0,
     marker.pose.position.y = y
     marker.pose.position.z = z
     if not np.allclose(normal, [0, 0, 1]):
-        rot = rodrigues([0, 0, 1], normal)
+        rot = rodrigues(normal)
         x, y, z, w = rot.as_quat()
         marker.pose.orientation.x = x
         marker.pose.orientation.y = y
@@ -141,7 +141,7 @@ def make_annulus_marker(center, normal, rads, colors, id=0, ns='annulus_marker',
     #plt.show()
 
     if not np.allclose(normal, [0, 0, 1], atol=.01):
-        rot = rodrigues([0, 0, 1], normal)
+        rot = rodrigues(normal)
         tri_points = rot.apply(tri_points.reshape(-1, 3))
     tri_points += center
     marker = Marker()
@@ -168,12 +168,18 @@ def make_annulus_marker(center, normal, rads, colors, id=0, ns='annulus_marker',
     return marker
 
 
-def make_points_marker(pointss, colorss, id=0, scale=0.01, ns='points_marker', duration=None, type=Marker.CUBE_LIST):
+def make_points_marker(pointss, colorss, orientation=None, id=0, scale=0.005, ns='points_marker', duration=None, type=Marker.CUBE_LIST,
+                       header=None):
+    if orientation is None:
+        orientation = Quaternion()
     pointss = [np.array(points).reshape(-1, 3).astype(float) for points in pointss]
     colorss = [np.array(colors).reshape(-1, 4).astype(float) for colors in colorss]
     marker = Marker()
     marker.type = type
-    marker.header.frame_id = "map"
+    if header is None:
+        header = Header()
+        header.frame_id = "map"
+    marker.header = header
     marker.id = id
     marker.ns = ns
     duration = rclpy.duration.Duration(seconds=5.) if duration is None else duration
@@ -196,6 +202,7 @@ def make_points_marker(pointss, colorss, id=0, scale=0.01, ns='points_marker', d
             marker_colors += [ColorRGBA(r=colors[0, 0], g=colors[0, 1], b=colors[0, 2], a=colors[0, 3]) for _ in range(points.shape[0])]
     marker.points = marker_points
     marker.colors = marker_colors
+    #marker.pose.orientation = orientation
     return marker
     
 

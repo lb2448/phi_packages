@@ -128,9 +128,10 @@ class Ring_detector(Node):
             marker = make_annulus_marker(centers.mean(axis=0), normals.mean(axis=0), (rads_1.mean(), rads_2.mean()), color, id=i, ns='ring_detection')
             marker_array.markers.append(marker)
             pose = Pose()
-            pose.position.x = centers.mean(axis=0)[0]
-            pose.position.y = centers.mean(axis=0)[1]
-            pose.position.z = centers.mean(axis=0)[2]
+            center = centers.mean(axis=0)
+            pose.position.x = center[0]
+            pose.position.y = center[1]
+            pose.position.z = center[2]
             pose_array.poses.append(pose)
         self.detection_pub.publish(marker_array)
 
@@ -271,7 +272,7 @@ class Ring_detector(Node):
         plane_marker = make_plane_marker((ptp, ptp), plane_model[:3], fit_points.mean(axis=0), [1, 1, 0, .75], ns=f"plane_intersection_{intersection_labels}")
 
         if in_plane:
-            rot = rodrigues(plane_model[:3], [0, 0, 1])
+            rot = rodrigues([0, 0, 1], plane_model[:3])
             fit_points_flat = rot.apply(fit_points)
             fit_points_flat[:, 2] = fit_points_flat[:, 2].mean()
             #print(fit_points_flat.shape)

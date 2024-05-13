@@ -4,7 +4,10 @@ import numba as nb
 from scipy.spatial.transform import Rotation as R
 import time
 
-def rodrigues(from_vec, to_vec):
+
+def rodrigues(to_vec, from_vec=None):
+    if from_vec is None:
+        from_vec = [0, 0, 1]
     n0 = np.array(from_vec)
     n1 = to_vec/np.linalg.norm(to_vec)
     theta = np.arccos(np.dot(n0, n1))
@@ -97,7 +100,7 @@ def fit_sphere(data):
 #@nb.jit(nopython=True, nogil=True, cache=True)
 def fit_circle(data, normal):
     if not np.allclose(normal, [0, 0, 1], atol=1e-3):
-        rot = rodrigues(normal[:3], [0, 0, 1])
+        rot = rodrigues([0, 0, 1], normal[:3])
         data = rot.apply(data)
     x, y, z = data[:, 0], data[:, 1], data[:, 2]
     x_mu, y_mu = x.mean(), y.mean()
