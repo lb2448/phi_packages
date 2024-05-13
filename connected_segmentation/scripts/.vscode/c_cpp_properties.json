@@ -1,0 +1,45 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/lb/ROS_TURTLE_WORKSPACE/devel/include/**",
+        "/home/lb/ROS_WORKSPACE/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/depthimage_to_laserscan/include/**",
+        "/home/lb/ROS_WORKSPACE/src/face_localizer/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_auto_docking/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_bumper2pc/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_controller_tutorial/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki_desktop/kobuki_gazebo_plugins/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_keyop/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_node/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_random_walker/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/kobuki/kobuki_safety_controller/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part1/tf2/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_cmd_vel_mux/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_controllers/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_diff_drive_pose_controller/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_keyop/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_math_toolkit/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_navi_toolkit/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_navigator/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_safety_controller/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_velocity_smoother/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_virtual_sensor/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_waypoint_provider/include/**",
+        "/home/lb/ROS_TURTLE_WORKSPACE/src/Turtlebot_packs_part2/yujin_ocs/yocs_waypoints_navi/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

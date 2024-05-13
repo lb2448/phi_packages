@@ -1,0 +1,16 @@
+launch:
+
+- node:
+    pkg: "connected_segmentation"
+    exec: "scripts/connected_segmentation_script.py"
+    name: "segmentation_node_main_cam"
+    namespace: "dis"
+    remap:
+    -
+        from: "/input/pose"
+        to: "/turtlesim1/turtle1/pose"
+    -
+        from: "/output/cmd_vel"
+        to: "/turtlesim2/turtle1/cmd_vel"
+
+

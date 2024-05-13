@@ -1,0 +1,10 @@
+triangle
+numpy
+numba
+matplotlib
+pyransac3d
+connected-components-3d
+scipy
+scikit-learn
+ultralytics
+opencv-python

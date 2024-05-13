@@ -1,0 +1,17 @@
+ros2 launch dis_tutorial3 sim_turtlebot_nav.launch.py 
+colcon build --packages-up-to dis_tutorial3 
+colcon build --packages-up-to detect_rings 
+colcon build --packages-up-to detect_cylinders
+colcon build --packages-up-to detect_parking 
+ros2 run connected_segmentation connected_segmentation_script.py --ros-args -p use_sim_time:=True
+ros2 run detect_rings detect_rings_script --ros-args -p use_sim_time:=True      
+ros2 run detect_cylinders detect_cyliders_script --ros-args -p use_sim_time:=True  
+ros2 run detect_parking detect_parking_script --ros-args -p use_sim_time:=True  
+ros2 run autonomous_explore autonomous_explore_node --ros-args -p use_sim_time:=True
+ros2 launch autonomous_explore detectors_launch.yaml 
+
+
+
+
+
+

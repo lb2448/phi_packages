@@ -1,0 +1,33 @@
+launch:
+
+- node:
+    pkg: "detect_parking"
+    exec: "detect_parking_script"
+    name: "park_det"
+    namespace: "task2"
+    param:
+    -
+      name: "use_sim_time"
+      value: true
+
+        
+
+- node:
+    pkg: "detect_rings"
+    exec: "detect_rings_script"
+    name: "ring_det"
+    namespace: "task2"
+    param:
+    -
+      name: "use_sim_time"
+      value: true
+
+- node:
+    pkg: "detect_cylinders"
+    exec: "detect_cyliders_script"
+    name: "cyl_det"
+    namespace: "task2"
+    param:
+    -
+      name: "use_sim_time"
+      value: true
